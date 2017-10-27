@@ -627,13 +627,15 @@ class H5PContentAdmin {
    * @param string $editor_id
    */
   public function add_insert_button($editor_id = 'content') {
-    $this->insertButton = TRUE;
+      if(apply_filters('h5p_show_insert_button', true, $editor_id)){
+          $this->insertButton = TRUE;
 
-    printf('<button type="button" id="add-h5p" class="button" title="%s" data-method="%s">%s</button>',
-        __('Insert interactive content', $this->plugin_slug),
-        get_option('h5p_insert_method', 'id'),
-        __('Add H5P', $this->plugin_slug)
-    );
+          printf('<button type="button" id="add-h5p" class="button" title="%s" data-method="%s">%s</button>',
+              __('Insert interactive content', $this->plugin_slug),
+              get_option('h5p_insert_method', 'id'),
+              __('Add H5P', $this->plugin_slug)
+          );
+      }
   }
 
   /**
