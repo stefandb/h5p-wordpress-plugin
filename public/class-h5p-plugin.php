@@ -900,7 +900,7 @@ class H5P_Plugin {
       }
     }
 
-    return $settings;
+      return apply_filters('h5p_core_settings', $settings);
   }
 
   /**
