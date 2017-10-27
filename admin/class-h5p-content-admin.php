@@ -359,6 +359,9 @@ class H5PContentAdmin {
       if ($result) {
         $content['id'] = $result;
         $this->set_content_tags($content['id'], filter_input(INPUT_POST, 'tags'));
+
+        do_action('h5p_content_save_after', $content);
+
         wp_safe_redirect(admin_url('admin.php?page=h5p&task=show&id=' . $result));
         exit;
       }
